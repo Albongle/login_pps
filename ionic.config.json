@@ -1,0 +1,7 @@
+{
+  "name": "login-pps",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
