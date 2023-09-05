@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticatoinService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class SingInComponent implements OnInit {
   protected toastIcon: string;
   constructor(
     private readonly authorization: AuthenticatoinService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router
   ) {
     this.formLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,6 +36,9 @@ export class SingInComponent implements OnInit {
 
       if (isAuthorized) {
         this.showToast('Bienvenido usuario', 'log-in-outline', 'success');
+        setTimeout(() => {
+          this.router.navigateByUrl('welcome');
+        }, 2000);
       } else {
         this.showToast(
           'Usuario o contraseña incorrectos',
