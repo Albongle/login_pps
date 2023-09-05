@@ -21,12 +21,17 @@ export class AuthenticatoinService {
     );
 
     if (userFind) {
-      this.localStorage.saveInLocalStorage('login', {
+      this.localStorage.saveInLocalStorage('activeUser', {
         ...userFind,
         password: '*****',
       });
       return true;
     }
     return false;
+  }
+
+  public get currentUser() {
+    const currentUser = this.localStorage.getFromLocalStorage('activeUser');
+    return currentUser || undefined;
   }
 }
