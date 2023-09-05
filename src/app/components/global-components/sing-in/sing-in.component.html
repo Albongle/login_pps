@@ -1,0 +1,45 @@
+<ion-grid [fixed]="true">
+  <ion-row class="ion-align-items-center ion-justify-content-center">
+    <ion-col size="12" size-sm="8" size-md="5"
+      ><ion-card>
+        <ion-card-header> Login </ion-card-header>
+        <form [formGroup]="formLogin">
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-input
+              class="ion-margin"
+              type="email"
+              fill="solid"
+              label="Email"
+              [autocomplete]="true"
+              labelPlacement="floating"
+              errorText="Email invalido o requerido"
+              formControlName="email"
+            ></ion-input>
+
+            <ion-input
+              class="ion-margin"
+              type="password"
+              fill="solid"
+              label="Password"
+              [autocomplete]="true"
+              labelPlacement="floating"
+              errorText="Password es requerido"
+              formControlName="password"
+            ></ion-input>
+          </ion-row>
+          <ion-button (click)="singIn()" class="ion-margin-bottom"
+            >Login</ion-button
+          >
+        </form>
+
+        <ion-toast
+          [isOpen]="isToastOpen"
+          [message]="welcomeMessage"
+          [duration]="3000"
+          [icon]="toastIcon"
+          [color]="toastColor"
+          (didDismiss)="setOpen(false)"
+        ></ion-toast> </ion-card
+    ></ion-col>
+  </ion-row>
+</ion-grid>
